@@ -1,0 +1,22 @@
+html, body{
+    height: 90%;
+    color:red;
+}
+.c1{
+    background-color: lightpink;
+    width: 100;
+}
+.c2{
+    background-color: lightblue;
+    width: 200;
+}
+.mainDiv{
+    display: grid;
+    grid-template-rows: 1fr 1fr ;
+    grid-template-columns: 100px 200px 100px;
+    height: 100%;
+    
+}
+ol{
+    color: blue;
+}

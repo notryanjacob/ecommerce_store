@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Job Application Form</h2>
+        <form id="jobApplicationForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="experience">Experience (years):</label>
+                <input type="text" id="experience" name="experience" required>
+            </div>
+            <div class="form-group">
+                <label for="skills">Skills:</label>
+                <input type="text" id="skills" name="skills" required>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+
+        <div id="applicantDetails" style="display: none;">
+            <h2>Applicant Details</h2>
+            <table id="detailsTable">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Experience</th>
+                    <th>Skills</th>
+                </tr>
+            </table>
+            <button onclick="editDetails()">Edit Details</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("jobApplicationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            displayApplicantDetails();
+        });
+
+        function displayApplicantDetails() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var experience = document.getElementById("experience").value;
+            var skills = document.getElementById("skills").value;
+
+            document.getElementById("detailsTable").innerHTML += `
+                <tr>
+                    <td>${name}</td>
+                    <td>${email}</td>
+                    <td>${experience}</td>
+                    <td>${skills}</td>
+                </tr>
+            `;
+
+            document.getElementById("jobApplicationForm").reset();
+            document.getElementById("jobApplicationForm").style.display = "none";
+            document.getElementById("applicantDetails").style.display = "block";
+        }
+
+        function editDetails() {
+            document.getElementById("jobApplicationForm").style.display = "block";
+            document.getElementById("applicantDetails").style.display = "none";
+        }
+    </script>
+</body>
+</html>

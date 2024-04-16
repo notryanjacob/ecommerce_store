@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>DOM Projects</title>
+    </head>
+    <body>
+        <p>YouTube subscribe button</p>
+        <button class ="js-subscribe-button" onclick="changeButtonText()">Subscribe</button>
+        <div style="height: 20px;"></div> 
+        <a href="rock-paper-sci.html">Rock Paper Scissors</a>
+
+        <p>Amazon Shipping Calculator</p>
+        <input placeholder="Cost of order" class="js-cost-input" 
+        onkeydown="if(event.key === 'Enter'){
+            handleCostKeydown(event);
+
+        }">
+        <button class="js-cost-button">Calculate</button>
+        
+        <script>
+            function handleCostKeydown(){
+                if(event.key === 'Enter'){
+                    calculateTotal();
+                }
+            }
+            function changeButtonText(){
+                const buttonElement = document.querySelector(".js-subscribe-button");
+                buttonElement.innerText = buttonElement.innerText === "subscribe" ? "subscribed" : "subscribe";
+            }
+            
+        </script>
+    </body>
+</html>

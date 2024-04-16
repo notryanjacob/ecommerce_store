@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Interactions</title>
+    <style>
+        .area {
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            border: 2px solid black;
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="areaA" class="area" onclick="toggleBackgroundColor('areaA')">Area A</div>
+    <div id="areaB" class="area" onmouseover="cycleBackgroundColor('areaB')">Area B</div>
+    <div id="areaC" class="area" onmouseenter="changeBackgroundColor('areaC', 'red')" onmouseleave="changeBackgroundColor('areaC', 'green')">Area C</div>
+    <div id="areaD" class="area" ondblclick="changeBackgroundColor('areaD', 'pink')">Area D</div>
+
+    <script>
+        function toggleBackgroundColor(elementId) {
+            var element = document.getElementById(elementId);
+            var currentColor = element.style.backgroundColor;
+            element.style.backgroundColor = currentColor === "silver" ? "gold" : "silver";
+        }
+
+        function cycleBackgroundColor(elementId) {
+            var element = document.getElementById(elementId);
+            var colors = ["blue", "lime", "red", "yellow", "green"];
+            var currentColor = element.style.backgroundColor;
+            var currentIndex = colors.indexOf(currentColor);
+
+            if (currentIndex === -1 || currentIndex === colors.length - 1) {
+                element.style.backgroundColor = colors[0];
+            } else {
+                element.style.backgroundColor = colors[currentIndex + 1];
+            }
+        }
+
+        function changeBackgroundColor(elementId, color) {
+            var element = document.getElementById(elementId);
+            element.style.backgroundColor = color;
+        }
+    </script>
+</body>
+</html>

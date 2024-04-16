@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title>Rock-paper-scissors</title>
+</head>
+
+<body>
+    <h1>Rock-paper-scissors</h1>
+    <div>
+        <button onClick='check("rock")'>Rock</button>
+        <button onclick='check("paper")'>Paper</button>
+        <button onclick='check("Scissors")'>Scissors</button>
+        <p class="js-result">Result</p>
+        <p>Win : <span class="win">0</span> Loss : <span class="loss">0</span> Draw : <span class="draw">0 </span> </p>
+        <button onClick='reset()'>Reset</button>
+
+        <script>
+            let win = 0, loss = 0, draw = 0;
+            let para = document.querySelector(".js-result");
+            function check(i) {
+                const randomNumber = random();
+                if (randomNumber === 1) {
+                    para.innerHTML = "You win with " + i;
+                    win++;
+                    updateElements();
+                }
+                else if (randomNumber === 2) {
+                    para.innerHTML = "Draw with " + i;
+                    draw++;
+                    updateElements();
+                }
+                else {
+                    para.innerHTML = "You lose with " + i;
+                    loss++;
+                    updateElements();
+                }
+            }
+            function random() {
+                return Math.floor(Math.random() * 3) + 1;
+            }
+            function reset() {
+                win = 0; loss = 0; draw = 0;
+                updateElements();
+            }
+
+            function updateElements() {
+                document.querySelector('.win').innerHTML = win;
+                document.querySelector('.draw').innerHTML = draw;
+                document.querySelector('.loss').innerHTML = loss;
+            }
+        </script>
+    </div>
+</body>
+
+</html>
